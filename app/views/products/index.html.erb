@@ -1,0 +1,37 @@
+<div class="container">
+	<h1>Products</h1>
+	<%= link_to 'Add Products', new_product_path, class:'btn btn-primary'%>
+	<div class="row">
+		<% @products.each do |product| %>
+		<div class="col-md-4">
+			<div class="card" style="width: 18rem;">
+				<div class="d-flex">
+					<% if product.images.attached? %>
+					<% product.images.each do |image| %>
+					<%= image_tag image, style:"width:140px" %>
+					<% end %>
+					<% end %>
+				</div><hr>
+				<div class="card-body">
+					<p class="card-text">
+						<p>
+							<b>Model:</b> <%= product.name%>
+						</p>
+						<p>
+							<b>Details:</b> <%= product.description %>
+						</p>
+						<p>
+							<b>Color:</b>  <%= product.color %>
+						</p>
+					</p>
+					<p>
+						<%= link_to 'Edit', edit_product_path(product.id),class:"btn btn-primary" %>
+						<%= link_to 'Delete', product_path(product.id),method: :delete, data: {confirm:"Are you sure"}, class:"btn btn-danger" %>
+					</p>
+
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

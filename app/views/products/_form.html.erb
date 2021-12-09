@@ -1,0 +1,30 @@
+<%= form_for (@product) do |prod|%>
+<p>
+	<%= prod.label :name %>
+	<%= prod.text_field :name, placeholder:"Enter Product Name" %>
+</p>
+
+<p>
+	<%= prod.label :images %>
+	<%= prod.file_field :images, multiple: true %>
+</p>
+
+<p>
+	<%= prod.label :description %>
+	<%= prod.text_area :description %>
+</p>
+
+<p>
+	<%= prod.label :color %>
+	<%= prod.text_field :color %>
+</p>
+
+<p>
+	<%= prod.label :category_id %>
+	<%= prod.text_field :category_id %>
+</p>
+
+<p>
+	<%= prod.submit %>
+</p>
+<% end %>

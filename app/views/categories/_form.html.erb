@@ -1,0 +1,21 @@
+<div class="container">
+<%= form_for (@category) do |cat|%>
+<p>
+	<%= cat.label :name %>
+	<%= cat.text_field :name, placeholder:"Enter Product Name" %>
+</p>
+
+<p>
+	<%= cat.label :avatar %>
+	<%= cat.file_field :avatar %>
+</p>
+
+<p>
+	<%= cat.label :cat_type %>
+	<%= cat.text_field :cat_type, placeholder:"Enter Type e.g Electronics, Media" %>
+</p>
+<p>
+	<%= cat.submit %>
+</p>
+<% end %>
+</div>

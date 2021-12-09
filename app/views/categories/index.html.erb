@@ -1,0 +1,29 @@
+<div class="container">
+	<h1>Categories</h1>
+	<%= link_to "New Category", new_category_path, class: 'btn btn-info' %>
+	<div class="row">
+		<% @categories.each do |category| %>
+		<div class="col-md-4">
+			<div class="card" style="width: 18rem;">
+  			<%= link_to products_path do %>
+			<% if category.avatar.attached? %>
+      			<%= image_tag(category.avatar,class:"img-fluid")%>
+      		<% end %>
+      		<% end %>
+  			<div class="card-body">
+    		<p class="card-text"><p>
+				<b><%= category.name %></b>			
+			</p>
+
+			<p>
+				<%= category.cat_type %>
+			</p>
+				<%= link_to 'Edit', edit_category_path(category.id), class:'btn btn-primary' %>
+				<%= link_to 'Delete', category_path(category.id),method: :delete, data: {confirm:"Are you sure"},class:'btn btn-danger' %>
+			</p>
+  			</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
