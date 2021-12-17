@@ -1,17 +1,19 @@
 <div class="container">
 	<h1>Products</h1>
-	<%= link_to 'Add Products', new_product_path, class:'btn btn-primary'%>
+	<% if current_user.present? && current_user.admin? %>
+	<%= link_to 'Add Products', new_product_path, class:'btn btn-primary mb-3'%>
+	<% end %>
 	<div class="row">
 		<% @products.each do |product| %>
 		<div class="col-md-4">
-			<div class="card" style="width: 18rem;">
+			<div class="card" style="width: 18rem;background-color: #80808026;">
 				<div class="d-flex">
 					<% if product.images.attached? %>
 					<% product.images.each do |image| %>
-					<%= image_tag image, style:"width:140px" %>
+					<%= image_tag image,data_zoom_image: image, style:"width:143px;height:180px" %>
 					<% end %>
 					<% end %>
-				</div><hr>
+				</div>
 				<div class="card-body">
 					<p class="card-text">
 						<p>
@@ -25,8 +27,12 @@
 						</p>
 					</p>
 					<p>
+						<% if current_user.present? && current_user.admin? %>
 						<%= link_to 'Edit', edit_product_path(product.id),class:"btn btn-primary" %>
 						<%= link_to 'Delete', product_path(product.id),method: :delete, data: {confirm:"Are you sure"}, class:"btn btn-danger" %>
+						<% else %>
+						<%= button_to "+ Add to cart", line_items_path(:product_id => product.id) %>
+						<% end %>
 					</p>
 
 				</div>

@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Show cart</h2>
+  <ul>
+    <% @current_cart.line_items.each do |line_item| %>
+
+    <li>Item: <%= line_item.product.name %>
+    	Price: <%= number_to_currency(line_item.product.price) %>
+    	Quantity: <%= line_item.quantity %>
+    	Total Price: <%= number_to_currency(line_item.total_price) %>
+    </li>
+    <ul>
+
+      <li>
+        <%= link_to "increment", line_item_add_path(:id => line_item),remote: true, method: :post%><br>
+
+        
+
+        <%= link_to "decrement", line_item_reduce_path(:id => line_item),remote: true, method: :post  %>
+      </li>
+
+      <li>
+        <%= link_to "Remove item", line_item_path(:id => line_item),remote: true, method: :delete %>
+      </li>
+
+    </ul>
+    
+    <% end %>
+  </ul>
+  <h3>Sub total: <%= number_to_currency(@current_cart.sub_total) %></h3>
+  <%= link_to "Proceed to checkout", new_order_path,class:'btn btn-primary' %><br>
+  <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"},class:'btn btn-warning mt-2' %>
+</div>

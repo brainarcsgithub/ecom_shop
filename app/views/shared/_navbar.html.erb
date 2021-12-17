@@ -1,0 +1,43 @@
+<style>
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  a:hover{
+    color: black !important;
+  }
+</style>
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <%= link_to categories_path do %>
+  <%= image_tag("logo.jpg",width:"100") %>
+  <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav gap-4 ms-auto">
+        <li><%= link_to 'About Us'%></li>
+        <li><%= link_to 'Contact Us'%></li>
+        <li><%= link_to 'Careers' %></li>
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav_link",style: 'text-decoration: none' %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to 'Register', new_user_registration_path, class: "nav_link mr-3 text-dark", style: 'text-decoration: none' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign In', new_user_session_path, class: "nav_link text-dark",style: 'text-decoration: none' %>
+        </li>
+        <% end %>
+        <li>
+          <%= link_to cart_path(@current_cart[:id]) do %>
+          <i class="fas fa-shopping-cart"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+</nav>
+</div>
