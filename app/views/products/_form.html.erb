@@ -1,35 +1,37 @@
+<div class="container">
 <%= form_for (@product) do |prod|%>
 <p>
 	<%= prod.label :name %>
-	<%= prod.text_field :name, placeholder:"Enter Product Name" %>
+	<%= prod.text_field :name, placeholder:"Enter Product Name",class: "form-control" %>
 </p>
 
 <p>
 	<%= prod.label :images %>
-	<%= prod.file_field :images, multiple: true %>
+	<%= prod.file_field :images, multiple: true, class: "form-control" %>
 </p>
 
 <p>
 	<%= prod.label :description %>
-	<%= prod.text_area :description %>
+	<%= prod.text_area :description, class: "form-control" %>
 </p>
 
 <p>
 	<%= prod.label :color %>
-	<%= prod.text_field :color %>
+	<%= prod.text_field :color, class: "form-control" %>
 </p>
 
 <p>
 	<%= prod.label :price %>
-	<%= prod.text_field :price %>
+	<%= prod.text_field :price, class: "form-control" %>
 </p>
 
 <p>
 	<%= prod.label :category_id %>
-	<%= prod.text_field :category_id %>
+	<%= prod.text_field :category_id, class: "form-control" %>
 </p>
 
 <p>
-	<%= prod.submit %>
+	<%= prod.submit class: "btn btn-primary" %>
 </p>
 <% end %>
+</div>

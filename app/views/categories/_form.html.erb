@@ -2,20 +2,20 @@
 <%= form_for (@category) do |cat|%>
 <p>
 	<%= cat.label :name %>
-	<%= cat.text_field :name, placeholder:"Enter Product Name" %>
+	<%= cat.text_field :name, placeholder:"Enter Product Name", class: "form-control" %>
 </p>
 
 <p>
 	<%= cat.label :avatar %>
-	<%= cat.file_field :avatar %>
+	<%= cat.file_field :avatar, class: "form-control" %>
 </p>
 
 <p>
 	<%= cat.label :cat_type %>
-	<%= cat.text_field :cat_type, placeholder:"Enter Type e.g Electronics, Media" %>
+	<%= cat.text_field :cat_type, placeholder:"Enter Type e.g Electronics, Media", class: "form-control" %>
 </p>
 <p>
-	<%= cat.submit %>
+	<%= cat.submit class: "btn btn-primary" %>
 </p>
 <% end %>
 </div>

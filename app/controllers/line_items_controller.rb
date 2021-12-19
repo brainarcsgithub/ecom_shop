@@ -10,6 +10,7 @@ class LineItemsController < ApplicationController
       @line_item.cart = @current_cart
       @line_item.quantity =+ 1
       @line_item.product = chosen_product
+      @line_item.price = chosen_product.price * @line_item.quantity
     end
     @line_item.save(validate: false)
     redirect_to cart_path(@current_cart)
@@ -24,7 +25,7 @@ class LineItemsController < ApplicationController
   def add_quantity
     @line_item = LineItem.find(params[:id])
     @line_item.increment!(:quantity, 1)
-    
+    @line_item.save
     redirect_to cart_path(@current_cart)
   end
 
@@ -35,7 +36,7 @@ class LineItemsController < ApplicationController
     redirect_to cart_path(@current_cart)
   end
 
-  
+
 
 
   private

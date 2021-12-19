@@ -1,37 +1,39 @@
+<div class="container">
 <%= form_for(@order) do |f| %>
 
 <p>
 	<%= f.label :date %>
-	<%= f.date_field :date %>
+	<%= f.date_field :date, class:"form-control" %>
 </p>
 
 <p>
 	<%= f.label :customer_id %>
-	<%= f.text_field :customer_id%>
+	<%= f.text_field :customer_id, class:"form-control",placeholder:"Customer ID" %>
 </p>
 
 <p>
 	<%= f.label :name %>
-	<%= f.text_field :name%>
+	<%= f.text_field :name, class:"form-control",placeholder:"Enter your Name" %>
 </p>
 
 <p>
 	<%= f.label :email %>
-	<%= f.text_field :email%>
+	<%= f.text_field :email, class:"form-control",placeholder:"Email" %>
 </p>
 
 <p>
 	<%= f.label :address %>
-	<%= f.text_field :address%>
+	<%= f.text_field :address, class:"form-control",placeholder:"Enter your Complete address" %>
 </p>
 
 <p>
 	<%= f.label :pay_method %>
-	<%= f.text_field :pay_method%>
+	<%= f.text_field :pay_method, class:"form-control",placeholder:"E.g. Credit card or cash" %>
 </p>
 
 <p>
-	<%= f.submit%>
+	<%= f.submit class: "btn btn-primary" %>
 </p>
 
 <% end %>
+</div>
