@@ -1,7 +1,12 @@
 class ProductsController < ApplicationController
   
   def index
-    @products = Product.all
+    if params[:format].present?
+      # assign product to particular category by giving category_id in which you want to save and show the product
+      @products = Product.where(category_id: params[:format] )
+    else
+      @products = Product.all
+    end
   end
 
   def new
@@ -27,18 +32,23 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find_by_id(params[:id])
     @product.destroy
-    redirect_to products_path
+    respond_to do |format| 
+      format.html { redirect_to products_path }
+      format.json { head :no_content }
+      flash[:info] = "Product is succefully destroy."
+    end
+    
   end
 
 
   private
 
   def new_params_product
-    params.require(:product).permit(:name, :description, :color, :price, :category_id, images:[])
+    params.require(:product).permit(:name, :description, :color, :price, :category_id, :quantity, images:[])
   end
 
   def edit_params_product
-    params.require(:product).permit(:id, :name, :description, :color, :price, :category_id, images:[])
+    params.require(:product).permit(:id, :name, :description, :color, :price, :category_id, :quantity, images:[])
   end
 
 end

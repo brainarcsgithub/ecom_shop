@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :products
   resources :categories
   resources :orders
+  resources :charges, only: [:create]
+  resources :checkout
 end

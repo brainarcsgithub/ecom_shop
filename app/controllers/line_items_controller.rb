@@ -8,8 +8,9 @@ class LineItemsController < ApplicationController
     else
       @line_item = LineItem.new
       @line_item.cart = @current_cart
-      @line_item.quantity =+ 1
       @line_item.product = chosen_product
+      @line_item.sku_id = "sku#{chosen_product.id}"
+      @line_item.quantity =+ 1
       @line_item.price = chosen_product.price * @line_item.quantity
     end
     @line_item.save(validate: false)
@@ -41,7 +42,7 @@ class LineItemsController < ApplicationController
 
   private
   def line_item_params
-    params.require(:line_item).permit(:quantity, :product_id, :cart_id, :price)
+    params.require(:line_item).permit(:quantity, :product_id, :cart_id, :price, :sku_id)
   end
 
 end

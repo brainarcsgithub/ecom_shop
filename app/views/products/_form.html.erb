@@ -26,8 +26,13 @@
 </p>
 
 <p>
-	<%= prod.label :category_id %>
-	<%= prod.text_field :category_id, class: "form-control" %>
+	<%= prod.label :category_id,"Category's ID" %>
+	<%= prod.text_field :category_id, class: "form-control",placeholder:"enter category's id in which you want to store te product" %>
+</p>
+
+<p>
+	<%= prod.label :quantity,"Availabale Quantity" %>
+	<%= prod.text_field :quantity, class: "form-control" %>
 </p>
 
 <p>

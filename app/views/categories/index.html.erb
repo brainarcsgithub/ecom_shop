@@ -5,7 +5,7 @@
 		<% @categories.each do |category| %>
 		<div class="col-md-4">
 			<div class="card" style="width: 18rem;">
-  			<%= link_to products_path do %>
+  			<%= link_to products_path(category.id) do %>
 			<% if category.avatar.attached? %>
       			<%= image_tag(category.avatar,class:"img-fluid")%>
       		<% end %>

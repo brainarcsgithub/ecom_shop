@@ -1,0 +1,14 @@
+<%= form_tag charges_path do%>
+	<article>
+		<div>
+			<p><%= flash[:error] %></p>
+		</div>
+		<label>
+			<span><%= @amount %></span>
+		</label>
+	</article>
+	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Thanks for using"
+            data-locale="auto"></script>
+<% end %>
