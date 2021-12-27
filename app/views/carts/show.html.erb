@@ -9,23 +9,26 @@
     	Total Price: <%= number_to_currency(line_item.total_price) %>
     </li>
   </ul>
-    <ul>
+  <ul>
+    <li>
+      <%= link_to "-", line_item_reduce_path(:id => line_item),remote: true, method: :post,class:'btn btn-warning'  %> <span><%= line_item.quantity%></span>
+      <%= link_to "+", line_item_add_path(:id => line_item),remote: true, method: :post,class:"btn btn-info" %>
+    </li><br>
 
-      <li>
-        <%= link_to "-", line_item_reduce_path(:id => line_item),remote: true, method: :post,class:'btn btn-warning'  %> <span><%= line_item.quantity%></span>
-        <%= link_to "+", line_item_add_path(:id => line_item),remote: true, method: :post,class:"btn btn-info" %>
-      </li>
+    <li>
+      <%= link_to "Remove item", line_item_path(:id => line_item),remote: true, method: :delete, class: 'btn btn-primary' %>
+    </li>
 
-      <li>
-        <%= link_to "Remove item", line_item_path(:id => line_item),remote: true, method: :delete %>
-      </li>
-
-    </ul>
-    
-    <% end %>
   </ul>
 
-  <h3>Sub total: <%= number_to_currency(@current_cart.sub_total) %></h3>
-  <%= link_to "Proceed to checkout", new_order_path,class:'btn btn-primary' %><br>
-  <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"},class:'btn btn-warning mt-2' %>
+  <% end %>
+  <ul>
+    <% if @current_cart.present? && @current_cart.sub_total > 0%>
+    <h3>Sub total: <%= number_to_currency(@current_cart.sub_total) %></h3> 
+    <%= link_to "Proceed to checkout", new_order_path,class:'btn btn-primary' %><br>
+    <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"},class:'btn btn-warning mt-2' %>
+    <% else %>
+    <div class="alert alert-primary" role="alert">No Item Added in Cart</div>
+    <% end %>
+  </ul>
 </div>
