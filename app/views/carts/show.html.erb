@@ -24,7 +24,9 @@
   <% end %>
   <ul>
     <% if @current_cart.present? && @current_cart.sub_total > 0%>
-    <h3>Sub total: <%= number_to_currency(@current_cart.sub_total) %></h3> 
+    <h3>
+      Sub total: <%= number_to_currency(@current_cart.sub_total) %>  
+    </h3> 
     <%= link_to "Proceed to checkout", new_order_path,class:'btn btn-primary' %><br>
     <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"},class:'btn btn-warning mt-2' %>
     <% else %>
